@@ -1,6 +1,7 @@
 
 #include "client.hpp"
 #include "server.hpp"
+
 #include <chrono>
 #include <ctime>
 #include <curses.h>
@@ -13,6 +14,8 @@ std::thread tclient, tserver;
 int main(){
     client = gm::Client();
     server = gm::Server();
-    tclient = std::thread(&gm::Client::loop,client);
-    tserver = std::thread(&gm::Server::loop,server);
+    tclient = std::thread(&gm::Client::loop,&client);
+    tserver = std::thread(&gm::Server::loop,&server);
+    tclient.join();
+    tserver.join();
 }

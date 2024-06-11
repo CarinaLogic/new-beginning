@@ -1,0 +1,7 @@
+file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+list(REMOVE_ITEM SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/game.cpp)
+file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp)
+add_library(NewBeginning_src OBJECT ${SOURCES} ${HEADERS})
+target_include_directories(NewBeginning_src INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+add_executable(NewBeginning game.cpp)
+target_link_libraries(NewBeginning PRIVATE NewBeginning_src)
