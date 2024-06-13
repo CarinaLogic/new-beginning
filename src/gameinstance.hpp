@@ -12,7 +12,7 @@ namespace gm {
         double elaspedTime = 0;
         int framerate = 60;
         public:
-        void tick();
+        virtual void tick();
         void loop();
     };
 }
