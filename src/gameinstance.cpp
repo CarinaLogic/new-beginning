@@ -1,4 +1,8 @@
 #include "gameinstance.hpp"
+#include <fstream>
+#include <stdexcept>
+#include <string>
+#include <utility>
 
 
 void gm::GameInstance::loop(){
@@ -14,6 +18,22 @@ void gm::GameInstance::loop(){
     }
 
 }
-void gm::GameInstance::tick(){
-
+std::string gm::GameInstance::getAsset(gm::Path p){
+    std::string str;
+    try {
+        str = assetMap.at(p);
+    } catch (std::out_of_range er) {
+        std::ifstream ifile(p.getFilePath());
+        std::string buf;
+        if (ifile.is_open()){
+            while (std::getline(ifile,buf)) {
+                str.append(buf);
+                if (str.find_last_of("\n") != str.length()-1){
+                    str.append("\n");
+                }
+            }
+        }
+        assetMap.insert(std::make_pair(p,str));
+    }
+    return str;
 }

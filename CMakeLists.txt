@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(NewBeginning)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 add_subdirectory(src)
 set(CURSES_NEED_NCURSES TRUE)
 set(CURSES_NEED_WIDE TRUE)
