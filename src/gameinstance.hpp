@@ -39,8 +39,8 @@ namespace gm{
         int framerate = 60;
         std::unordered_map<Path,std::string> assetMap;
         public:
-        GameInstance();
-        virtual void tick();
+        GameInstance(){}
+        virtual void tick() = 0;
         void loop();
         std::string getAsset(Path p);
     };
