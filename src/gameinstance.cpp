@@ -19,6 +19,7 @@ void gm::GameInstance::loop(){
     }
 
 }
+//Asset always ends with newline
 std::string gm::GameInstance::getAsset(std::string p){
     std::string str;
     try {
@@ -36,10 +37,6 @@ std::string gm::GameInstance::getAsset(std::string p){
                 }
             }
         }
-        else{
-            std::cout << "error" << std::endl;
-        }
-        std::cout << "Loaded" << std::endl;
         assetMap.insert(std::make_pair(p,str));
     }
     return str;
