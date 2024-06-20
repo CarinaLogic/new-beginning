@@ -7,7 +7,7 @@ namespace gm {
     class Client: public GameInstance{
         public:
         void tick(){
-            std::cout << "Client is working!" << std::endl;
+            std::cout << getAsset("client");
         }
     };
 }

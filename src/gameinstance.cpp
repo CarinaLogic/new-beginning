@@ -1,5 +1,6 @@
 #include "gameinstance.hpp"
 #include <fstream>
+#include <iostream>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -18,12 +19,14 @@ void gm::GameInstance::loop(){
     }
 
 }
-std::string gm::GameInstance::getAsset(gm::Path p){
+std::string gm::GameInstance::getAsset(std::string p){
     std::string str;
     try {
         str = assetMap.at(p);
     } catch (std::out_of_range er) {
-        std::ifstream ifile(p.getFilePath());
+        std::string path = "assets/";
+        path.append(p).append(".txt");
+        std::ifstream ifile(path);
         std::string buf;
         if (ifile.is_open()){
             while (std::getline(ifile,buf)) {
@@ -33,6 +36,10 @@ std::string gm::GameInstance::getAsset(gm::Path p){
                 }
             }
         }
+        else{
+            std::cout << "error" << std::endl;
+        }
+        std::cout << "Loaded" << std::endl;
         assetMap.insert(std::make_pair(p,str));
     }
     return str;
